@@ -4,50 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bee King Simulator | Values 🐝</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        /* Dark/Light Mode */
+        body.light-mode {
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #ffcc00;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .navbar a:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Home Section */
+        .home {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        /* Image Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slider img {
+            width: 100%;
+            display: none;
+        }
+
+        .slider img.active {
+            display: block;
+        }
+
+        /* Sections */
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        /* Dark Mode Button */
+        .mode-toggle {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            background: black;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Bee King Simulator | Values 🐝</h1>
-        <button id="theme-toggle">Toggle Dark/Light Mode</button>
-    </header>
+<body class="light-mode">
 
-    <section id="home">
-        <div class="slider">
-            <img src="slide1.jpg" class="slide active">
-            <img src="slide2.jpg" class="slide">
-            <img src="slide3.jpg" class="slide">
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#values">Values</a>
+            <a href="#updates">Updates</a>
+            <a href="#settings">Settings</a>
         </div>
-    </section>
+        <button class="mode-toggle" onclick="toggleMode()">Dark Mode</button>
+    </div>
 
-    <section id="about">
-        <h2>About</h2>
-        <p>Bee King Simulator is an exciting game where you collect and trade exclusive bees.</p>
-    </section>
+    <!-- Home Section -->
+    <div class="home" id="home">
+        <h1>🐝 Welcome to Bee King Simulator | Values</h1>
+        <p>Check out the latest values and updates!</p>
 
-    <section id="values">
-        <h2>Value List</h2>
-        <table>
-            <tr>
-                <th>Name</th><th>Normal</th><th>Golden</th><th>Rainbow</th>
-            </tr>
-            <tr>
-                <td>King Lamb Bee</td><td>500K</td><td>800K</td><td>2.5M+</td>
-            </tr>
-            <tr>
-                <td>King Corgi Bee</td><td>800K</td><td>1.3M</td><td>5M+</td>
-            </tr>
-        </table>
-    </section>
+        <!-- Image Slider -->
+        <div class="slider">
+            <img src="https://via.placeholder.com/800x400/FFCC00/000000?text=Bee+King+1" class="active">
+            <img src="https://via.placeholder.com/800x400/FF9900/000000?text=Bee+King+2">
+            <img src="https://via.placeholder.com/800x400/FF6600/000000?text=Bee+King+3">
+        </div>
+    </div>
 
-    <section id="updates">
-        <h2>Latest Updates</h2>
-        <p>New bees added! Check out the updated value list.</p>
-    </section>
+    <!-- About Section -->
+    <div class="section" id="about">
+        <h2>About Bee King Simulator</h2>
+        <p>This is a fan-made value tracking website for Bee King Simulator!</p>
+    </div>
 
-    <footer>
-        <p>© 2025 Bee King Simulator</p>
-    </footer>
+    <!-- Values Section -->
+    <div class="section" id="values">
+        <h2>Latest Values</h2>
+        <p>Coming Soon!</p>
+    </div>
+
+    <!-- Updates Section -->
+    <div class="section" id="updates">
+        <h2>Game Updates</h2>
+        <p>Stay tuned for new features!</p>
+    </div>
+
+    <!-- Settings Section -->
+    <div class="section" id="settings">
+        <h2>Settings</h2>
+        <p>Customize your experience here.</p>
+    </div>
+
+    <script>
+        // Dark/Light Mode Toggle
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle("light-mode");
+        }
+
+        // Image Slider
+        let images = document.querySelectorAll(".slider img");
+        let currentIndex = 0;
+
+        function changeImage() {
+            images[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add("active");
+        }
+
+        setInterval(changeImage, 3000); // Change every 3 seconds
+    </script>
+
 </body>
 </html>
